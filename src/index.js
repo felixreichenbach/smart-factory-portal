@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
 // Apollo
 import {
   ApolloProvider,
@@ -27,7 +26,7 @@ import * as Realm from "realm-web";
 // 5. Deploy your changes
 //
 // Once your app is set up, replace the value of APP_ID with your App ID
-export const APP_ID = "myiot-sxwcb";
+export const APP_ID = "YOUR-REALM-APPID";
 
 // Connect to your MongoDB Realm app
 const app = new Realm.App(APP_ID);
@@ -70,7 +69,7 @@ ReactDOM.render(
   <React.StrictMode>
       <ApolloProvider client={client}>
         <App />
-      </ApolloProvider>,
+      </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

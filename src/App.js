@@ -1,34 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-
-
-// Apollo
-import {
-  useQuery
-} from "@apollo/client";
-import { GET_ORDERS } from "./graphql_ops";
-
-
-function GetOrders() {
-
-  const { loading, error, data } = useQuery(GET_ORDERS, {
-    //variables: { query: { title: searchText } }
-  });
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  console.log(data);
-
-  return data.orders.map(({ _id, content, userId }) => (
-    <div key={_id}>
-      <p>
-        {content}: {userId}
-      </p>
-    </div>
-  ));
-}
-
+import { OrderForm } from './OrderForm';
+import { LoginForm } from './LoginForm';
+import { OrdersView } from './OrdersView';
 
 
 function App() {
@@ -40,18 +14,12 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <GetOrders />
+        <h1>Login Form</h1>
+        <LoginForm />
+        <h1>Orders Overview</h1>
+        <OrdersView />
+        <h1>Order Form</h1>
+        <OrderForm />
       </header>
     </div>
   );
