@@ -1,47 +1,80 @@
-// LoginForm Component
-
-import React from 'react';
+import React from "react";
+// Realm
+import * as Realm from "realm-web";
+import assert from "assert";
 
 export class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
-
-    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      username: "",
+      password: "",
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  async loginEmailPassword(email, password) {
+
+    const credentials = Realm.Credentials.emailPassword(email, password);
+
+    try {
+      // Authenticate the user
+      const user = await this.props.app.logIn(credentials);
+      // `App.currentUser` updates to match the logged in user
+      assert(user.id === this.props.app.currentUser.id);
+      console.log(user);
+      return user;
+    } catch (err) {
+      console.error("Failed to log in", err);
+    }
   }
 
   handleSubmit(event) {
-    console.log(this.state.value);
-    //alert("A name was submitted: " + this.state.value);
+    // Login Function
+    this.loginEmailPassword(this.state.username, this.state.password).then(
+      (user) => {
+        console.log("Successfully logged in!");
+        this.props.setUser(user);
+      }
+    );
+
     event.preventDefault();
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Username:
-          <input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div>
+        <h1>Login Form</h1>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Username:
+            <input name="username" onChange={this.handleInputChange} />
+          </label>
+          <br />
+          <label>
+            Password:
+            <input
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <br />
+          <input type="submit" value="Login" />
+        </form>
+      </div>
     );
   }
 }
