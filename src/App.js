@@ -14,10 +14,11 @@ import {
   HttpLink,
   InMemoryCache,
 } from "@apollo/client";
+import { OrderForm } from "./OrderForm";
 
 
 // Connect to your MongoDB Realm app
-const APP_ID = "myiot-sxwcb";
+const APP_ID = "YOUR REALM APP ID";
 const app = new Realm.App(APP_ID);
 
 
@@ -66,6 +67,7 @@ function App(props) {
           {user ? (
             <ApolloProvider client={client}>
               <ContentView props={app} app_id={APP_ID} />
+              <OrderForm props={app} />
               </ApolloProvider>
           ) : (
             <LoginForm app={app} setUser={setUser} />
