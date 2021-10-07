@@ -5,7 +5,7 @@ import { useQuery } from "@apollo/client";
 
 import { GET_ORDERS } from "./graphql_ops";
 
-export function ContentView(props) {
+export function ContentView() {
   return (
     <div>
       <h1>Orders Overview</h1>

@@ -66,8 +66,8 @@ function App(props) {
         <img src={logo} className="App-logo" alt="logo" />
           {user ? (
             <ApolloProvider client={client}>
-              <ContentView props={app} app_id={APP_ID} />
-              <OrderForm props={app} />
+              <ContentView />
+              <OrderForm app={app} />
               </ApolloProvider>
           ) : (
             <LoginForm app={app} setUser={setUser} />
