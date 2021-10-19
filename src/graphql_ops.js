@@ -4,8 +4,10 @@ export const GET_ORDERS = gql`
   query {
     orders {
       _id
-      content
+      address
+      color
       userId
+      firstName
     }
   }
 `;

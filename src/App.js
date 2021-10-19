@@ -18,14 +18,14 @@ import { OrderForm } from "./OrderForm";
 
 
 // Connect to your MongoDB Realm app
-const APP_ID = "YOUR REALM APP ID";
+const APP_ID = "factoryportal-jxqbm";
 const app = new Realm.App(APP_ID);
 
 
 // Configure the ApolloClient to connect to your app's GraphQL endpoint
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: `https://realm.mongodb.com/api/client/v2.0/app/` + APP_ID + `/graphql`,
+    uri: `https://us-east-1.aws.realm.mongodb.com/api/client/v2.0/app/${APP_ID}/graphql`,
     // We define a custom fetch handler for the Apollo client that lets us authenticate GraphQL requests.
     // The function intercepts every Apollo HTTP request and adds an Authorization header with a valid
     // access token before sending the request.
@@ -64,6 +64,8 @@ function App(props) {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        </header>
+        <div>
           {user ? (
             <ApolloProvider client={client}>
               <ContentView />
@@ -73,7 +75,7 @@ function App(props) {
             <LoginForm app={app} setUser={setUser} />
           )}
         {user ? <StatusBar app={app} setUser={setUser} /> : <div />}
-      </header>
+      </div>
     </div>
   );
 }

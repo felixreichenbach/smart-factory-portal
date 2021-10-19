@@ -2,11 +2,21 @@
 
 import React from 'react';
 
+//bootstrap
+import Form from 'react-bootstrap/Form'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+
 export class OrderForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      content: "" 
+      address: "",
+      color: "",
+      firstName: "",
+      lastName: "",
+      orderStatus: "Order Submitted"
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -34,8 +44,12 @@ export class OrderForm extends React.Component {
 
 
   orders.insertOne({
-      content: this.state.content,
-      userId: this.props.app.currentUser.id
+      address: this.state.address,
+      color: this.state.color,
+      userId: this.props.app.currentUser.id,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      orderStatus: this.state.orderStatus,
     }).then(result => console.log("Result: " + result));
     alert("A new order was submitted!");
     event.preventDefault();
@@ -43,21 +57,112 @@ export class OrderForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>New Order</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Content:
-            <input
-              name="content"
-              type="text"
-              //value={this.state.content}
+      // <div>
+      //   <h1>New Order</h1>
+      //   <Form onSubmit={this.handleSubmit}>
+      //     <label>
+      //       Content:
+      //       <input
+      //         name="content"
+      //         type="text"
+      //         //value={this.state.content}
+      //         onChange={this.handleInputChange}
+      //       />
+      //     </label>
+      //     <label>
+      //       Content:
+      //       <input
+      //         name="color"
+      //         type="text"
+      //         //value={this.state.content}
+      //         onChange={this.handleInputChange}
+      //       />
+      //     </label>
+      //     <input type="submit" value="Submit" />
+      //   </Form>
+      // </div>
+    <div>
+      <h1>Order Form</h1>
+      <Container>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="formName" >
+              <Form.Label>Address</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Address" 
+                name="address"
+                onChange={this.handleInputChange}
+              />
+          </Form.Group>
+          <br />
+          <Form.Group controlId="formName" >
+              <Form.Label>First Name</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="First Name" 
+                name="firstName"
+                onChange={this.handleInputChange}
+              />
+          </Form.Group>
+          <br />
+          <Form.Group controlId="formName">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Last Name" 
+                name="lastName"
+                onChange={this.handleInputChange}
+              />
+          </Form.Group>
+          <br />
+          {/* <Form.Group>
+          <Form.Label>Item Color</Form.Label>
+            <Form.Control
+              as="select"
+              name="color"
               onChange={this.handleInputChange}
-            />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
+            >
+              <option>Please select a color</option>
+              <option value="red" >Red</option>
+              <option value="blue">Blue</option>
+              <option value="white">White</option>
+            </Form.Control>
+          </Form.Group> */}
+
+          <Form.Group>
+              <Form.Label>
+                Color
+              </Form.Label>
+                <Form.Check
+                  type="radio"
+                  label="Red"
+                  name="color"
+                  onChange={this.handleInputChange}
+                  value="red"
+                />
+                <Form.Check
+                  type="radio"
+                  label="Blue"
+                  name="color"
+                  onChange={this.handleInputChange}
+                  value="blue"
+                />
+                <Form.Check
+                  type="radio"
+                  label="White"
+                  name="color"
+                  onChange={this.handleInputChange}
+                  value="white"
+                />
+          </Form.Group>
+          <br />
+          <Button variant="primary" type="submit" value="Submit">
+            Submit
+          </Button>
+        </Form>
+      </Container>
+    </div>
+
     );
   }
 }
