@@ -18,7 +18,7 @@ import { OrderForm } from "./OrderForm";
 
 
 // Connect to your MongoDB Realm app
-const APP_ID = "factoryportal-jxqbm";
+const APP_ID = "YOUR-REALM-APP-ID";
 const app = new Realm.App(APP_ID);
 
 
