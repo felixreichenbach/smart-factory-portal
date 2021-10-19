@@ -1,5 +1,9 @@
 import React from "react";
 
+//bootstrap
+import Table from 'react-bootstrap/Table'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // Apollo
 import { useQuery } from "@apollo/client";
 
@@ -25,16 +29,32 @@ function OrdersView() {
   }
 
   if (error) {
+    console.log(data);
     console.log("Error: " + error);
     return <p>Error :(</p>;
   }
   console.log(data);
-
-  return data.orders.map(({ _id, content, userId }) => (
-    <div key={_id}>
-      <p>
-        {content}: {userId}
-      </p>
-    </div>
+  
+  return ((
+        <Table>
+          <thead>
+            <tr>
+              <th>Color</th>
+              {/* <th>First Name</th>
+              <th>Last Name</th> */}
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.orders.map(({ _id, color, address}) => (
+              <tr>
+                <td>{color}</td>
+                {/* <td>{firstName}</td>
+                <td>{lastName}</td> */}
+                <td>{address}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
   ));
 }
