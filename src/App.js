@@ -4,6 +4,8 @@ import "./App.css";
 import { LoginForm } from "./LoginForm";
 import { ContentView } from "./ContentView";
 import { StatusBar } from "./StatusBar";
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
 
 import * as Realm from "realm-web";
 
@@ -18,14 +20,14 @@ import { OrderForm } from "./OrderForm";
 
 
 // Connect to your MongoDB Realm app
-const APP_ID = "YOUR-REALM-APP-ID";
+const APP_ID = "APP_ID";
 const app = new Realm.App(APP_ID);
 
 
 // Configure the ApolloClient to connect to your app's GraphQL endpoint
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: `https://us-east-1.aws.realm.mongodb.com/api/client/v2.0/app/${APP_ID}/graphql`,
+    uri: `APP_URI`,
     // We define a custom fetch handler for the Apollo client that lets us authenticate GraphQL requests.
     // The function intercepts every Apollo HTTP request and adds an Authorization header with a valid
     // access token before sending the request.
@@ -68,8 +70,14 @@ function App(props) {
         <div>
           {user ? (
             <ApolloProvider client={client}>
-              <ContentView />
-              <OrderForm app={app} />
+              <Tabs fill defaultActiveKey="orders" id="uncontrolled-tab-example" className="mb-3">
+                <Tab eventKey="orders" title="Orders">
+                  <ContentView />
+                </Tab>
+                <Tab eventKey="form" title="Order Form">
+                  <OrderForm app={app} />
+                </Tab>
+              </Tabs>
               </ApolloProvider>
           ) : (
             <LoginForm app={app} setUser={setUser} />
