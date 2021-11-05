@@ -11,7 +11,6 @@ import { GET_ORDERS } from "./graphql_ops";
 export function ContentView() {
   return (
     <div>
-      <h1>Orders Overview</h1>
       <OrdersView />
     </div>
   );

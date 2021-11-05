@@ -3,19 +3,21 @@ import React from "react";
 import * as Realm from "realm-web";
 import assert from "assert";
 
+import { Button, Form } from "react-bootstrap";
+
 export class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
       password: "",
+      loginError: ""
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async loginEmailPassword(email, password) {
-
     const credentials = Realm.Credentials.emailPassword(email, password);
 
     try {
@@ -26,6 +28,7 @@ export class LoginForm extends React.Component {
       console.log(user);
       return user;
     } catch (err) {
+      this.setState({loginError: `${err}`});
       console.error("Failed to log in", err);
     }
   }
@@ -34,7 +37,6 @@ export class LoginForm extends React.Component {
     // Login Function
     this.loginEmailPassword(this.state.username, this.state.password).then(
       (user) => {
-        console.log("Successfully logged in!");
         this.props.setUser(user);
       }
     );
@@ -55,29 +57,38 @@ export class LoginForm extends React.Component {
   render() {
     return (
       <div>
-        <h1>Login Form</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Username:
-            <input 
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
               name="username"
-              //value={this.state.username} 
               onChange={this.handleInputChange}
             />
-          </label>
-          <br />
-          <label>
-            Password:
-            <input
-              name="password"
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
               type="password"
-              //value={this.state.password}
+              placeholder="Password"
+              name="password"
               onChange={this.handleInputChange}
             />
-          </label>
-          <br />
-          <input type="submit" value="Login" />
-        </form>
+          </Form.Group>
+          <Button
+            size="sm"
+            variant="outline-success"
+            type="submit"
+            value="Login"
+          >
+            Login
+          </Button>
+        </Form>
+        <p class="error">{this.state.loginError}</p>
       </div>
     );
   }

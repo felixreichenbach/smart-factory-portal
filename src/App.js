@@ -1,13 +1,22 @@
 import logo from "./logo.svg";
 import React from "react";
-import "./App.css";
 import { LoginForm } from "./LoginForm";
 import { ContentView } from "./ContentView";
 import { StatusBar } from "./StatusBar";
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
-import { graphQLEnpoint, realmAppID } from "./RealmAppConfig";
+import { OrderForm } from "./OrderForm";
 
+// Bootstrap
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Container from "react-bootstrap/Container";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
+import { Row, Col } from "react-bootstrap";
+
+// Custom CSS
+import "./App.css";
+
+// Realm
+import { graphQLEnpoint, realmAppID } from "./RealmAppConfig";
 import * as Realm from "realm-web";
 
 // Apollo
@@ -17,12 +26,9 @@ import {
   HttpLink,
   InMemoryCache,
 } from "@apollo/client";
-import { OrderForm } from "./OrderForm";
-
 
 // Connect to your MongoDB Realm app
 const app = new Realm.App(realmAppID);
-
 
 // Configure the ApolloClient to connect to your app's GraphQL endpoint
 const client = new ApolloClient({
@@ -54,23 +60,45 @@ async function getValidAccessToken() {
   return app.currentUser.accessToken;
 }
 
-
 function App(props) {
   // Keep the logged in Realm user in local state. This lets the app re-render
   // whenever the current user changes (e.g. logs in or logs out).
   const [user, setUser] = React.useState(app.currentUser);
 
-  // Conditional Rendering ->> https://reactjs.org/docs/conditional-rendering.html  
+  // Conditional Rendering ->> https://reactjs.org/docs/conditional-rendering.html
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        </header>
-        <div>
+        <Container>
+          <Row className="align-items-center">
+            <Col xs={3}>
+              <img
+                src={logo}
+                width="100"
+                height="100"
+                className="d-inline-block align-top"
+                alt="MongoDB Logo"
+              />
+            </Col>
+            <Col md="auto">
+              <div>
+                <h1>MongoDB Connected Factory</h1>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </header>
+      <main>
+        <Container>
           {user ? (
             <ApolloProvider client={client}>
-              <Tabs fill defaultActiveKey="orders" id="uncontrolled-tab-example" className="mb-3">
+              <Tabs
+                fill
+                defaultActiveKey="orders"
+                id="uncontrolled-tab-example"
+                className="mb-3"
+              >
                 <Tab eventKey="orders" title="Orders">
                   <ContentView />
                 </Tab>
@@ -78,12 +106,13 @@ function App(props) {
                   <OrderForm app={app} />
                 </Tab>
               </Tabs>
-              </ApolloProvider>
+            </ApolloProvider>
           ) : (
             <LoginForm app={app} setUser={setUser} />
           )}
-        {user ? <StatusBar app={app} setUser={setUser} /> : <div />}
-      </div>
+          {user ? <StatusBar app={app} setUser={setUser} /> : <div />}
+        </Container>
+      </main>
     </div>
   );
 }
