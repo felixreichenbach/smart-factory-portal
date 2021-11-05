@@ -57,30 +57,6 @@ export class OrderForm extends React.Component {
 
   render() {
     return (
-      // <div>
-      //   <h1>New Order</h1>
-      //   <Form onSubmit={this.handleSubmit}>
-      //     <label>
-      //       Content:
-      //       <input
-      //         name="content"
-      //         type="text"
-      //         //value={this.state.content}
-      //         onChange={this.handleInputChange}
-      //       />
-      //     </label>
-      //     <label>
-      //       Content:
-      //       <input
-      //         name="color"
-      //         type="text"
-      //         //value={this.state.content}
-      //         onChange={this.handleInputChange}
-      //       />
-      //     </label>
-      //     <input type="submit" value="Submit" />
-      //   </Form>
-      // </div>
     <div>
       <h1>Order Form</h1>
       <Container>
@@ -115,20 +91,6 @@ export class OrderForm extends React.Component {
               />
           </Form.Group>
           <br />
-          {/* <Form.Group>
-          <Form.Label>Item Color</Form.Label>
-            <Form.Control
-              as="select"
-              name="color"
-              onChange={this.handleInputChange}
-            >
-              <option>Please select a color</option>
-              <option value="red" >Red</option>
-              <option value="blue">Blue</option>
-              <option value="white">White</option>
-            </Form.Control>
-          </Form.Group> */}
-
           <Form.Group>
               <Form.Label>
                 Color
@@ -162,7 +124,6 @@ export class OrderForm extends React.Component {
         </Form>
       </Container>
     </div>
-
     );
   }
 }

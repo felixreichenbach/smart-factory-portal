@@ -1,13 +1,12 @@
 import React from "react";
 
-//bootstrap
-import Table from 'react-bootstrap/Table'
-import 'bootstrap/dist/css/bootstrap.min.css';
+// Bootstrap
+import Table from 'react-bootstrap/Table';
 
 // Apollo
 import { useQuery } from "@apollo/client";
-
 import { GET_ORDERS } from "./graphql_ops";
+
 
 export function ContentView() {
   return (
@@ -40,18 +39,20 @@ function OrdersView() {
           <thead>
             <tr>
               <th>Color</th>
-              {/* <th>First Name</th>
-              <th>Last Name</th> */}
+              <th>First Name</th>
+              <th>Last Name</th>
               <th>Address</th>
+              <th>Order Status</th>
             </tr>
           </thead>
           <tbody>
-            {data.orders.map(({ _id, color, address}) => (
-              <tr>
+            {data.orders.map(({ _id, color, address, firstName, lastName, orderStatus}) => (
+              <tr key={_id}>
                 <td>{color}</td>
-                {/* <td>{firstName}</td>
-                <td>{lastName}</td> */}
+                <td>{firstName}</td>
+                <td>{lastName}</td>
                 <td>{address}</td>
+                <td>{orderStatus}</td>
               </tr>
             ))}
           </tbody>

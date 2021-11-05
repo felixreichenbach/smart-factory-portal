@@ -8,6 +8,9 @@ export const GET_ORDERS = gql`
       color
       userId
       firstName
+      lastName
+      orderStatus
     }
   }
 `;
+
