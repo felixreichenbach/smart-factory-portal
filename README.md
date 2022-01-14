@@ -115,6 +115,5 @@ graphql endpoint:
 <img width="1792" alt="Screen Shot 2022-01-13 at 11 21 36 PM" src="https://user-images.githubusercontent.com/24992718/149451118-ca93c866-fbae-4a3a-85ad-1b59cb2d27d7.png">
 
 
-<img width="302" alt="Screen Shot 2022-01-13 at 11 12 04 PM" src="https://user-images.githubusercontent.com/24992718/149450752-118a71cc-e4ae-417e-9587-d5297b5de9e9.png">
-
+7. MQQT to be added soon
 
