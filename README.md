@@ -70,6 +70,26 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-### Deployment guide 
+### Important links
+
+MongoDB Realm GraphQL Documentations: https://docs.mongodb.com/realm/graphql/
+MongoDB Realm React Documentation: 
+Functions:https://docs.mongodb.com/realm/functions/
+Triggers: https://docs.mongodb.com/realm/triggers/database-triggers/ 
+
+### Deployment guide - IN PROGRESS
+1. Download code and set up on computer
+
+1. Create MongoDB Atlas Database
 <img width="1792" alt="Screen Shot 2022-01-13 at 6 25 48 PM" src="https://user-images.githubusercontent.com/24992718/149425807-9167dae5-beaf-483f-bd14-7a20ba252f75.png">
+
+2. Create Realm app 
+
+3. Link Realm app to Atlas
+
+4. Add data to Atlas 
+
+5. GraphQL Schema
+
+6. Get Atlas ID and add to code
 
