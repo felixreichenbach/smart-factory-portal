@@ -84,12 +84,24 @@ Triggers: https://docs.mongodb.com/realm/triggers/database-triggers/
 <img width="1792" alt="Screen Shot 2022-01-13 at 6 25 48 PM" src="https://user-images.githubusercontent.com/24992718/149425807-9167dae5-beaf-483f-bd14-7a20ba252f75.png">
 
 2. Create Realm app 
+<img width="995" alt="Screen Shot 2022-01-13 at 6 32 40 PM" src="https://user-images.githubusercontent.com/24992718/149449839-fd1a2a98-7b67-4acc-b1c8-bd3fa648ce98.png">
 
 3. Link Realm app to Atlas
+<img width="992" alt="Screen Shot 2022-01-13 at 6 34 00 PM" src="https://user-images.githubusercontent.com/24992718/149449873-384f26ce-1f1f-4ede-bb58-cf334a6e4d9b.png">
 
-4. Add data to Atlas 
+4. Upload sample data to Atlas - sample data file to be added 
+
 
 5. GraphQL Schema
+<img width="1792" alt="Screen Shot 2022-01-13 at 11 09 21 PM" src="https://user-images.githubusercontent.com/24992718/149450104-1fc67131-8910-4436-82c1-4a2a3823ebda.png">
+
+<img width="1792" alt="Screen Shot 2022-01-13 at 11 09 29 PM" src="https://user-images.githubusercontent.com/24992718/149450120-c49543a2-4c93-45e7-a357-cbbb5af8b86b.png">
+
+<img width="1792" alt="Screen Shot 2022-01-13 at 11 09 46 PM" src="https://user-images.githubusercontent.com/24992718/149450137-c13177c7-1a48-4dea-82c3-135e324841ce.png">
+
 
 6. Get Atlas ID and add to code
+<img width="1792" alt="Screen Shot 2022-01-13 at 11 11 59 PM" src="https://user-images.githubusercontent.com/24992718/149450307-c6066281-8f65-411c-8e21-567497331e2f.png">
+
+<img width="302" alt="Screen Shot 2022-01-13 at 11 12 04 PM" src="https://user-images.githubusercontent.com/24992718/149450321-ff0750dc-c664-4dd3-bc1b-00a426631b07.png">
 
