@@ -73,9 +73,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### Important links
 
 MongoDB Realm GraphQL Documentations: https://docs.mongodb.com/realm/graphql/
+
 MongoDB Realm React Documentation: 
+
 Functions:https://docs.mongodb.com/realm/functions/
+
 Triggers: https://docs.mongodb.com/realm/triggers/database-triggers/ 
+
 
 ### Deployment guide - IN PROGRESS
 1. Download code and set up on computer
@@ -100,8 +104,17 @@ Triggers: https://docs.mongodb.com/realm/triggers/database-triggers/
 <img width="1792" alt="Screen Shot 2022-01-13 at 11 09 46 PM" src="https://user-images.githubusercontent.com/24992718/149450137-c13177c7-1a48-4dea-82c3-135e324841ce.png">
 
 
-6. Get Atlas ID and add to code
+6. Get Atlas ID and add to RealmAppConfig.js code
+
+App ID:
 <img width="1792" alt="Screen Shot 2022-01-13 at 11 11 59 PM" src="https://user-images.githubusercontent.com/24992718/149450307-c6066281-8f65-411c-8e21-567497331e2f.png">
 
 <img width="302" alt="Screen Shot 2022-01-13 at 11 12 04 PM" src="https://user-images.githubusercontent.com/24992718/149450321-ff0750dc-c664-4dd3-bc1b-00a426631b07.png">
+
+graphql endpoint:
+<img width="1792" alt="Screen Shot 2022-01-13 at 11 21 36 PM" src="https://user-images.githubusercontent.com/24992718/149451118-ca93c866-fbae-4a3a-85ad-1b59cb2d27d7.png">
+
+
+<img width="302" alt="Screen Shot 2022-01-13 at 11 12 04 PM" src="https://user-images.githubusercontent.com/24992718/149450752-118a71cc-e4ae-417e-9587-d5297b5de9e9.png">
+
 
